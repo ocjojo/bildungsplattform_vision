@@ -16,7 +16,7 @@ Can be reached at http://localhost:9000
 
 ```bash
 ### Compiles and hot-reloads for development (started automatically with docker-compose up)
-npm run serve
+npm run frontend
 
 ### Compiles and minifies for production
 npm run build
@@ -28,6 +28,14 @@ npm run lint
 #### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+### Backend
+
+Can be reached at http://localhost:3000
+
 ### Database
 
 Can be reached at http://localhost:8000
+
+## Roadmap
+
+  - [ ] combine Endpoints for Frontend and Backend under one Port?

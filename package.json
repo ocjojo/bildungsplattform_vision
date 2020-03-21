@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "npm run serve",
-    "serve": "cd ./frontend && vue-cli-service serve",
+    "start": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "frontend": "cd ./frontend && vue-cli-service serve",
+    "backend": "cd ./backend && node app.js",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "docker": "docker-compose exec -uwww-data vision bash"
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/ocjojo/bildungsplattform_vision#readme",
   "dependencies": {
     "core-js": "^3.6.4",
+    "express": "^4.17.1",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",
