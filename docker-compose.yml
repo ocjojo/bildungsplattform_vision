@@ -8,9 +8,19 @@ services:
       - web
     ports:
       # Local port: docker port
-      - 8000:8080
+      - 9000:8080
     volumes:
       - .:/opt/project
+  db:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+  adminer:
+    image: adminer
+    ports:
+      # Local port: docker port
+      - 8000:8080
 
 networks:
   web:

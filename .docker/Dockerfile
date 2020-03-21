@@ -13,4 +13,4 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
   && usermod --uid 1000 www-data \
   && mkdir -p /var/www && chown 1000:1000 -R /var/www && chown 1000:1000 -R /opt/project
 
-CMD npm run start
+CMD npm i && npm start
