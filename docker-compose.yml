@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  vision:
+    build:
+      context: ./.docker
+    container_name: vision
+    networks:
+      - web
+    ports:
+      # Local port: docker port
+      - 8000:8080
+    volumes:
+      - .:/opt/project
+
+networks:
+  web:
+    external: true

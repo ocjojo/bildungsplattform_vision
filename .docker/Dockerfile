@@ -1,0 +1,15 @@
+FROM debian:10-slim
+
+WORKDIR /opt/project
+
+RUN apt-get -qq update && apt-get install -qqy --no-install-recommends \
+  ca-certificates curl unzip nano git
+
+RUN apt-get install -y gnupg \
+  && curl -sL https://deb.nodesource.com/setup_13.x | bash && apt-get install -y nodejs
+
+# clean up
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+CMD chown 1000:1000 -R /opt/project/ \
+  && npm run start
