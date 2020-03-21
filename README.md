@@ -8,7 +8,7 @@
 ## Development
 
 - run `docker-compose exec -uwww-data vision bash` to log into the container  
-  if you have node installed locally run "npm run docker" as shortcut.
+  if you have node installed locally run `npm run docker` as shortcut.
 - run `npm install`
 - run `npm start`
 
