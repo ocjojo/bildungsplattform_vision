@@ -23,14 +23,14 @@
       </div>
     </header>
     <section>
-      <template v-for="track of availableTracks">
+      <template v-for="track of tracks">
         <router-link
           v-bind:key="track.id"
           :to="{
             name: 'kurs',
             params: {
-              routeName: getRouterString(track.name),
-              trackName: track.name
+              routeName: getRouterString(track.Name),
+              trackName: track.Name
             }
           }"
         >
@@ -42,59 +42,15 @@
 </template>
 
 <script>
-import TrackCard from "../components/TrackCard";
+import TrackCard from "@/components/TrackCard";
+import { mapGetters } from "@/store";
 
 export default {
   components: {
     TrackCard
   },
-  data() {
-    return {
-      availableTracks: [
-        {
-          id: 0,
-          name: "Nachhaltiger Konsum",
-          description:
-            "Dies ist ein Blindtest, in dem eine Beschreibung vom Kurs steht. Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht."
-        },
-        {
-          id: 1,
-          name: "Nachhaltiger Konsum",
-          description:
-            "Dies ist ein Blindtest, in dem eine Beschreibung vom Kurs steht. Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht."
-        },
-        {
-          id: 2,
-          name: "Nachhaltiger Konsum",
-          description:
-            "Dies ist ein Blindtest, in dem eine Beschreibung vom Kurs steht. Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht."
-        },
-        {
-          id: 3,
-          name: "Nachhaltiger Konsum",
-          description:
-            "Dies ist ein Blindtest, in dem eine Beschreibung vom Kurs steht. Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht."
-        },
-        {
-          id: 4,
-          name: "Nachhaltiger Konsum",
-          description:
-            "Dies ist ein Blindtest, in dem eine Beschreibung vom Kurs steht. Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht."
-        },
-        {
-          id: 5,
-          name: "Nachhaltiger Konsum",
-          description:
-            "Dies ist ein Blindtest, in dem eine Beschreibung vom Kurs steht. Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht."
-        },
-        {
-          id: 6,
-          name: "Nachhaltiger Konsum",
-          description:
-            "Dies ist ein Blindtest, in dem eine Beschreibung vom Kurs steht. Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht."
-        }
-      ]
-    };
+  asyncComputed: {
+    ...mapGetters(["tracks"])
   },
   methods: {
     getRouterString(item) {

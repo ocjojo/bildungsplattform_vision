@@ -26,6 +26,18 @@ const getters = {
         return store.user;
       });
     }
+  },
+  async tracks() {
+    if (store.tracks) {
+      return store.tracks;
+    } else {
+      return api.tracks().then(tracks => {
+        if (!tracks.error) {
+          Vue.set(store, "tracks", tracks);
+        }
+        return store.tracks;
+      });
+    }
   }
 };
 

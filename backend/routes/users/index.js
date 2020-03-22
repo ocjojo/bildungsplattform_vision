@@ -44,7 +44,7 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
 
     let { username, password } = req.body;
-    knex('users').select('users.ID', 'users.Username', 'users.Fullname', 'users.Email', 'users.Password', 'user_to_usergroup.GroupID').where('Username', username).leftJoin('user_to_usergroup', 'users.ID', 'user_to_usergroup.UserID').then(result => {
+    knex('users').select('users.ID', 'users.Username', 'users.Fullname', 'users.Email', 'users.Password', 'user_to_usergroup.GroupID').where('Username', username).orWhere('Email', username).leftJoin('user_to_usergroup', 'users.ID', 'user_to_usergroup.UserID').then(result => {
         if (result && result.length > 0) {
             const user = result[0];
             bcrypt.compare(password, user.Password, (err, result) => {
