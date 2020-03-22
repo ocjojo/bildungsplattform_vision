@@ -1,32 +1,69 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>
+      <img src="./assets/logo.svg" alt="logo" />
+      <router-link to="/" class="dashboard">Dashboard</router-link>
+      <router-link to="/kurse">Kurse</router-link>
+      <router-link to="/raeume">Räume</router-link>
+      <router-link to="/hilfe">Hilfe</router-link>
+      <input type="search" />
+      <router-link to="/profil">
+        Dein Profil
+        <img src="./assets/defaultAvatar.svg" alt="avatar" />
+      </router-link>
     </div>
-    <router-view />
+    <SideBar />
+    <div class="content-container">
+      <router-view />
+    </div>
   </div>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import SideBar from "./components/SideBar";
 
-#nav {
-  padding: 30px;
+export default {
+  components: {
+    SideBar
+  }
+};
+</script>
+
+<style lang="scss">
+.nav {
+  box-shadow: 0px 4px 11px $color-shadow;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .dashboard:before {
+    font-icon: url("@/assets/logo.svg");
+  }
 
   a {
-    font-weight: bold;
-    color: #2c3e50;
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+
+    img {
+      margin-left: 10px;
+    }
 
     &.router-link-exact-active {
-      color: #42b983;
+      background: $primary-gradient;
+      color: #fff;
     }
   }
+}
+
+.content-container {
+  position: absolute;
+  left: 270px;
+  top: 60px;
+  width: calc(100vw - 270px);
+  height: calc(100vh - 60px);
 }
 </style>

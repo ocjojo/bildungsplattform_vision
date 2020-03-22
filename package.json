@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/ocjojo/bildungsplattform_vision#readme",
   "dependencies": {
-    "concurrently": "^5.1.0",
     "core-js": "^3.6.4",
     "express": "^4.17.1",
     "knex": "^0.20.12",
@@ -42,12 +41,14 @@
     "@vue/cli-service": "~4.2.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.0.3",
+    "concurrently": "^5.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^6.1.2",
-    "less": "^3.0.4",
-    "less-loader": "^5.0.0",
+    "iconfont-webpack-plugin": "^4.2.2",
     "prettier": "^1.19.1",
+    "sass": "^1.26.3",
+    "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
   }
 }

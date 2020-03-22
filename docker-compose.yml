@@ -4,8 +4,6 @@ services:
     build:
       context: ./.docker
     container_name: vision
-    networks:
-      - web
     ports:
       # Local port: docker port
       - 9000:8080 # Frontend
@@ -28,6 +26,3 @@ services:
       # Local port: docker port
       - 8000:8080
 
-networks:
-  web:
-    external: true
