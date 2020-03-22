@@ -6,7 +6,7 @@
         <router-link to="/" class="dashboard">Dashboard</router-link>
         <router-link to="/kurse" class="track">Kurse</router-link>
         <router-link to="/raeume" class="community">Räume</router-link>
-        <router-link to="/hilfe" class="help">Hilfe</router-link>
+        <!-- <router-link to="/hilfe" class="help">Hilfe</router-link> -->
       </div>
       <div class="search"><input type="search" /></div>
       <a class="profile-menu" tabindex="0">
