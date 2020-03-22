@@ -6,7 +6,7 @@
       <router-link to="/kurse" class="track">Kurse</router-link>
       <router-link to="/raeume" class="community">Räume</router-link>
       <router-link to="/hilfe" class="help">Hilfe</router-link>
-      <input type="search" />
+      <div class="search"><input type="search" /></div>
       <router-link to="/profil">
         Dein Profil
         <img src="./assets/defaultAvatar.svg" alt="avatar" />
@@ -46,8 +46,17 @@ export default {
   .help:before {
     font-icon: url("@/assets/icons/help.svg");
   }
+  .search {
+    position: relative;
+  }
   .search:before {
     font-icon: url("@/assets/icons/search.svg");
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: $primary;
   }
   .track:before {
     font-icon: url("@/assets/icons/track.svg");
@@ -63,13 +72,16 @@ export default {
     img {
       margin-left: 10px;
     }
-
+    &:before {
+      margin-right: 5px;
+      color: $primary;
+    }
     &.router-link-exact-active {
       background: $primary-gradient;
       color: #fff;
-    }
-    &:before {
-      margin-right: 5px;
+      &:before {
+        color: inherit;
+      }
     }
   }
 }
