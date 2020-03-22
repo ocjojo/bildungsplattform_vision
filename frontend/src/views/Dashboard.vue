@@ -11,7 +11,7 @@
         <button class="btn">Kurs fortführen</button>
       </div>
     </div>
-    <div class="card card-lg">
+    <div class="card card-lg analytics">
       <div class="card-body">
         <h2>Analytics</h2>
       </div>
@@ -20,7 +20,7 @@
       </div>
       <div class="card-footer"></div>
     </div>
-    <div class="card">
+    <div class="card recommendations">
       <div class="card-header">
         <h2>Empfohlen für dich</h2>
       </div>
@@ -51,7 +51,7 @@
       </div>
       <div class="card-footer"></div>
     </div>
-    <div class="card">
+    <div class="card top-teachers">
       <div class="card-body">
         <h2>Meine Top Lehrer</h2>
       </div>
@@ -64,7 +64,7 @@
       </div>
       <div class="card-footer"></div>
     </div>
-    <div class="card">
+    <div class="card favorites">
       <div class="card-header">
         <h2>Deine beliebtesten Kurse</h2>
       </div>
@@ -114,20 +114,22 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   padding: 10px;
 }
 .card {
   background: #FFFFFF;
   box-shadow: 0px 4px 14px rgba(119, 109, 160, 0.25);
-  width: 280px;
+  width: 300px;
   min-height: 250px;
   margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-radius: 15px;
 }
 .card-lg {
-  width: 580px;
+  width: 620px;
 }
 
 .card-footer {
@@ -151,6 +153,7 @@ h2 {
 h2.dark-bg {
   background: rgba(37, 37, 37, 0.5);
   color: #fff;
+  border-radius: 15px;
 }
 
 .latest-course p {
@@ -181,5 +184,29 @@ ul {
       }
     }
   }
+}
+.recommendations {
+  background: url('../assets/form-red.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: -100px;
+}
+.top-teachers {
+  background: url('../assets/form-green.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: -2px;
+}
+.favorites {
+  background: url('../assets/form-purple.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100px -100px;
+}
+.analytics {
+  background: url('../assets/form-blue.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: -150px -80px;
 }
 </style>
