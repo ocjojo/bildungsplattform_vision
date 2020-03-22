@@ -27,6 +27,8 @@ services:
       - 3306:3306
   adminer:
     image: adminer
+    networks:
+      - db
     ports:
       # Local port: docker port
       - 8000:8080
