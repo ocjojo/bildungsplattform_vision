@@ -14,7 +14,35 @@
     <div class="card card-lg">
     </div>
     <div class="card">
-      <h2>Empfohlen für dich</h2>
+      <div class="card-header">
+        <h2>Empfohlen für dich</h2>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>
+            <div class="track-description">
+              <h5>Random Kurs Name 1</h5>
+              <div class="descr">Eine tolle Beschreibung für den Kurs</div>
+            </div>
+            <button class="btn btn-action play"></button>
+          </li>
+          <li>
+            <div class="track-description">
+              <h5>Random Kurs Name 2</h5>
+              <div class="descr">Eine tolle Beschreibung für den Kurs</div>
+            </div>
+            <button class="btn btn-action play"></button>
+          </li>
+          <li>
+            <div class="track-description">
+              <h5>Random Kurs Name 3</h5>
+              <div class="descr">Eine tolle Beschreibung für den Kurs</div>
+            </div>
+            <button class="btn btn-action play"></button>
+          </li>
+        </ul>
+      </div>
+      <div class="card-footer"></div>
     </div>
     <div class="card">
       <h2>Meine Top Lehrer</h2>
@@ -36,7 +64,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .home {
   display: flex;
   flex-direction: row;
@@ -85,5 +113,28 @@ h2.dark-bg {
   margin: 20px 0;
   text-align: center;
   color: #fff;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  li {
+    display: flex;
+    margin: 12px 20px;
+    justify-content: space-between;
+    align-items: center;
+    .track-description {
+      width: 80%;
+      h5 { 
+        font-size: 1.6rem;
+        font-weight: 200;
+        margin: 5px 0;
+      }
+      .descr {
+        font-size: 1.2rem;
+        font-weight: 400;
+      }
+    }
+  }
 }
 </style>

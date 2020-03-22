@@ -43,7 +43,8 @@ ul {
   margin: 0;
   li {
     padding: 4px 10px 4px 35px;
-  }
+    font-size: 1.4rem;
+  } 
 }
 
 .list-heading {
@@ -94,5 +95,9 @@ li.chat {
   max-height: 0;
   transition-delay: 0s;
   transition: 0.2s ease-in-out;
+}
+
+.track:before {
+  margin-right: 7px;
 }
 </style>

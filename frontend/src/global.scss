@@ -63,7 +63,35 @@ li {
     background-position-x: -40px;
   }
   &:focus {
-    // filter: saturate(0.2) brightness(0.9);
     background-position-x: 0;
   }
+}
+
+.btn-action {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+
+.play:before {
+  font-icon: url("@/assets/icons/play.svg");
+}
+.dashboard:before {
+  font-icon: url("@/assets/icons/dashboard.svg");
+}
+.community:before {
+  font-icon: url("@/assets/icons/community.svg");
+}
+.help:before {
+  font-icon: url("@/assets/icons/help.svg");
+}
+.track:before {
+  font-icon: url("@/assets/icons/track.svg");
+}
+.search:before {
+  font-icon: url("@/assets/icons/search.svg");
 }

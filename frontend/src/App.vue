@@ -40,15 +40,7 @@ export default {
   justify-content: space-around;
   align-items: center;
 
-  .dashboard:before {
-    font-icon: url("@/assets/icons/dashboard.svg");
-  }
-  .community:before {
-    font-icon: url("@/assets/icons/community.svg");
-  }
-  .help:before {
-    font-icon: url("@/assets/icons/help.svg");
-  }
+  
   .search {
     position: relative;
   }
@@ -61,9 +53,7 @@ export default {
     font-size: 1.2rem;
     color: $primary;
   }
-  .track:before {
-    font-icon: url("@/assets/icons/track.svg");
-  }
+  
 
   a {
     text-decoration: none;
