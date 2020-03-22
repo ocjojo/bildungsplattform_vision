@@ -3,7 +3,7 @@
     <div class="track-img"></div>
     <div class="track-info">
       <h5>{{ track.Name }}</h5>
-      <p>{{ track.Description }}</p>
+      <p>{{ description }}</p>
     </div>
   </div>
 </template>
@@ -12,6 +12,14 @@
 export default {
   props: {
     track: Object
+  },
+  computed: {
+    description() {
+      const shortened = this.track.Description.substring(0, 160);
+      return shortened.length === this.track.Description.length
+        ? shortened
+        : shortened + "...";
+    }
   }
 };
 </script>
@@ -42,7 +50,6 @@ export default {
     margin-bottom: 5px;
     overflow: hidden;
     padding-top: 0;
-    text-overflow: ellipsis;
 
     h5 {
       font-weight: 900;
