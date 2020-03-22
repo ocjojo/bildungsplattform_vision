@@ -1,3 +1,5 @@
+const IconfontWebpackPlugin = require("iconfont-webpack-plugin");
+
 // vue.config.js
 // see https://cli.vuejs.org/config/
 module.exports = {
@@ -7,6 +9,9 @@ module.exports = {
   },
   css: {
     loaderOptions: {
+      postcss: {
+        plugins: loader => [new IconfontWebpackPlugin(loader)]
+      },
       sass: {
         prependData: `
           @import "@/colors.scss";

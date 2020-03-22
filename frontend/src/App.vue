@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <div class="nav">
+    <div id="nav">
       <img src="./assets/logo.svg" alt="logo" />
-      <router-link to="/">Dashboard</router-link>
+      <router-link to="/" class="dashboard">Dashboard</router-link>
       <router-link to="/kurse">Kurse</router-link>
       <router-link to="/raeume">Räume</router-link>
       <router-link to="/hilfe">Hilfe</router-link>
@@ -29,7 +29,6 @@ export default {
 };
 </script>
 
-
 <style lang="scss">
 .nav {
   box-shadow: 0px 4px 11px $color-shadow;
@@ -37,6 +36,10 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  .dashboard:before {
+    font-icon: url("@/assets/logo.svg");
+  }
 
   a {
     text-decoration: none;
