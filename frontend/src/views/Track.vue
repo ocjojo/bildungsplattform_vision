@@ -9,10 +9,7 @@
         </div>
       </div>
     </header>
-    <section class="material">
-      <div class="video"><button class="btn btn-action play"></button></div>
-      <div class="description">{{ track.Description }}</div>
-    </section>
+    <Unit v-for="unit of units" v-bind:key="unit.ID" :unit="unit"> </Unit>
     <section class="forum">
       <h2>Forum - {{ track.Name }}</h2>
       <div class="new-post-container">
@@ -27,28 +24,36 @@
 </template>
 
 <script>
+import Unit from "@/components/Unit";
 import { mapGetters } from "@/store";
 export default {
+  components: {
+    Unit
+  },
   data() {
     return {
-      track: {}
+      track: {},
+      units: []
     };
   },
   methods: {
-    getTrack(routeName) {
-      const getTrack = mapGetters(["track"]).track;
+    getData(routeName) {
+      const getters = mapGetters(["track", "trackUnits"]);
       const id = routeName.split("-", 2)[0];
 
-      this.track = getTrack(id).then(track => {
+      getters.track(id).then(track => {
         this.track = track;
+      });
+      getters.trackUnits(id).then(units => {
+        this.units = units;
       });
     }
   },
   created() {
-    this.getTrack(this.$route.params.routeName);
+    this.getData(this.$route.params.routeName);
   },
   beforeRouteUpdate(to, from, next) {
-    this.getTrack(to.params.routeName);
+    this.getData(to.params.routeName);
     next();
   }
 };
@@ -83,26 +88,6 @@ header {
         margin: 5px 0;
       }
     }
-  }
-}
-
-section.material {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 40px;
-  .video {
-    width: 500px;
-    height: 280px;
-    background: #f3f3f3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-  }
-  .description {
-    max-width: 600px;
-    padding: 10px;
   }
 }
 

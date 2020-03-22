@@ -94,8 +94,8 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-import AnalyticsCard from "../components/AnalyticsCard.vue";
+import AnalyticsCard from "@/components/AnalyticsCard.vue";
+import { slugify } from "@/util";
 
 export default {
   name: "Home",
@@ -112,13 +112,7 @@ export default {
         .catch(() => {});
     },
     getRouterString(item) {
-      return item
-        .toString()
-        .toLowerCase()
-        .trim()
-        .replace(/&/g, "-and-")
-        .replace(/[\s\W-]+/g, "-")
-        .replace(/-$/, "");
+      return slugify(item);
     }
   }
 };

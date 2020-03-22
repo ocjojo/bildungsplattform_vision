@@ -63,7 +63,10 @@ export default {
     return get("/tracks/");
   },
   track(id) {
-    return get("/track/" + id);
+    return get("/tracks/" + id);
+  },
+  trackUnits(id) {
+    return get(`/tracks/${id}/units`);
   },
   rooms() {
     return get("/rooms/");

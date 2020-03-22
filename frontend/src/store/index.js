@@ -54,6 +54,21 @@ const getters = {
       return track;
     });
   },
+  async trackUnits(id) {
+    if (store.trackUnits && store.trackUnits[id]) {
+      return store.trackUnits[id];
+    }
+    return api.trackUnits(id).then(trackUnits => {
+      if (!trackUnits.error) {
+        Vue.set(
+          store,
+          "trackUnits",
+          deepmerge({ [id]: trackUnits }, store.trackUnits || {})
+        );
+      }
+      return store.trackUnits[id];
+    });
+  },
   async rooms() {
     if (store.rooms) {
       return store.rooms;
