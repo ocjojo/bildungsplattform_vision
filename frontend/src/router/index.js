@@ -70,15 +70,6 @@ const routes = [
     meta: {
       requiresAuth: true
     }
-  },
-  {
-    path: "/hilfe",
-    name: "heup",
-    component: () =>
-      import(/* webpackChunkName: "tracks" */ "@/views/Help.vue"),
-    meta: {
-      requiresAuth: true
-    }
   }
 ];
 

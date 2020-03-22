@@ -43,6 +43,7 @@
 <script>
 import TrackCard from "@/components/TrackCard";
 import { mapGetters } from "@/store";
+import { slugify } from "@/util";
 
 export default {
   components: {
@@ -53,13 +54,7 @@ export default {
   },
   methods: {
     getRouterString(item) {
-      return item
-        .toString()
-        .toLowerCase()
-        .trim()
-        .replace(/&/g, "-and-") // Replace & with 'and'
-        .replace(/[\s\W-]+/g, "-")
-        .replace(/-$/, ""); // Remove last floating dash if exists
+      return slugify(item);
     }
   }
 };

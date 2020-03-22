@@ -1,7 +1,7 @@
 <template>
   <div class="room">
     <header>
-      <div class="track-title">{{ $route.params.trackName }}</div>
+      <div class="track-title">{{ room.Name }}</div>
     </header>
     <section>
       <div class="feed-item">
@@ -17,15 +17,15 @@
           <button class="btn">Posten</button>
         </div>
       </div>
-      <template v-for="post of posts">
-        <div class="feed-item" v-bind:key="post.date">
+      <template v-for="message of messages">
+        <div class="feed-item" v-bind:key="message.ID">
           <div class="avatar">
             <img src="@/assets/defaultAvatar.svg" alt="avatar" />
-            <div>{{ post.user }}</div>
+            <div>{{ message.AuthorID }}</div>
           </div>
           <div class="post-container">
-            <div class="time">{{ post.date }}</div>
-            {{ post.text }}
+            <div class="time">{{ formatDatetime(message.CreatedAt) }}</div>
+            {{ message.Message }}
           </div>
         </div>
       </template>
@@ -34,27 +34,35 @@
 </template>
 
 <script>
+import { mapGetters } from "@/store";
+import { formatDatetime } from "@/util";
 export default {
   data() {
     return {
-      posts: [
-        {
-          user: "Paul",
-          text: "Weiß jemand, was wir heute auf haben?",
-          date: "20.03.2020 10:15Uhr"
-        },
-        {
-          user: "Jannik",
-          text: "Das ist doch voll easy, ich erklär dir das im Chat",
-          date: "20.03.2020 8:23Uhr"
-        },
-        {
-          user: "Stefan",
-          text: "Ich hab das irgendwie nicht verstanden",
-          date: "20.03.2020 8:22Uhr"
-        }
-      ]
+      room: {},
+      messages: []
     };
+  },
+  methods: {
+    formatDatetime,
+    getData(routeName) {
+      const getters = mapGetters(["room", "roomMessages"]);
+      const id = routeName.split("-", 2)[0];
+
+      getters.room(id).then(room => {
+        this.room = room;
+      });
+      getters.roomMessages(id).then(messages => {
+        this.messages = messages;
+      });
+    }
+  },
+  created() {
+    this.getData(this.$route.params.routeName);
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.getData(to.params.routeName);
+    next();
   }
 };
 </script>
@@ -71,7 +79,7 @@ header {
     position: absolute;
     width: 100%;
     bottom: 0;
-    height: 100px;
+    height: 80px;
     background: rgba(37, 37, 37, 0.5);
     color: #fff;
     display: flex;

@@ -53,6 +53,49 @@ const getters = {
       }
       return track;
     });
+  },
+  async rooms() {
+    if (store.rooms) {
+      console.log(store.rooms);
+      return store.rooms;
+    } else {
+      return api.rooms().then(rooms => {
+        console.log(rooms);
+        if (!rooms.error) {
+          Vue.set(store, "rooms", rooms);
+        }
+        return store.rooms;
+      });
+    }
+  },
+  async room(id) {
+    if (store.rooms && store.rooms.length > 0) {
+      const room = store.rooms.find(room => room.ID == id);
+      if (room) {
+        return room;
+      }
+    }
+    return api.room(id).then(room => {
+      if (!room.error) {
+        Vue.set(store, "rooms", deepmerge([room], store.rooms));
+      }
+      return room;
+    });
+  },
+  async roomMessages(id) {
+    if (store.roomMessages && store.roomMessages[id]) {
+      return store.roomMessages[id];
+    }
+    return api.roomMessages(id).then(roomMessages => {
+      if (!roomMessages.error) {
+        Vue.set(
+          store,
+          "roomMessages",
+          deepmerge({ [id]: roomMessages }, store.roomMessages || {})
+        );
+      }
+      return store.roomMessages[id];
+    });
   }
 };
 
