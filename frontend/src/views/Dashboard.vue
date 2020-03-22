@@ -8,7 +8,9 @@
         <p>Du hast bereits 83% des Kurses abgeschlossen!</p>
       </div>
       <div class="card-footer">
-        <button class="btn">Kurs fortführen</button>
+        <button class="btn" @click="goToCourse('Nachhaltiger Konsum')">
+          Kurs fortführen
+        </button>
       </div>
     </div>
     <AnalyticsCard />
@@ -99,6 +101,25 @@ export default {
   name: "Home",
   components: {
     AnalyticsCard
+  },
+  methods: {
+    goToCourse(item) {
+      this.$router
+        .push({
+          name: "kurs",
+          params: { routeName: "1-" + this.getRouterString(item) }
+        })
+        .catch(() => {});
+    },
+    getRouterString(item) {
+      return item
+        .toString()
+        .toLowerCase()
+        .trim()
+        .replace(/&/g, "-and-")
+        .replace(/[\s\W-]+/g, "-")
+        .replace(/-$/, "");
+    }
   }
 };
 </script>
