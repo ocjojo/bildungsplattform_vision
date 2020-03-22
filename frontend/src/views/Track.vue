@@ -2,7 +2,7 @@
   <div>
     <header>
       <div class="track-info">
-        <div class="track-title">{{ track.Name || "Nachhaltigkeit" }}</div>
+        <div class="track-title">{{ track.Name }}</div>
         <div class="track-detailed-info">
           <div class="track-users group">23</div>
           <div class="track-rating rating">4,5</div>
@@ -14,7 +14,7 @@
       <div class="description">{{ track.Description }}</div>
     </section>
     <section class="forum">
-      <h2>Forum - {{ track.Name || "Nachhaltigkeit" }}</h2>
+      <h2>Forum - {{ track.Name }}</h2>
       <div class="new-post-container">
         <textarea
           name="newComment"
@@ -34,15 +34,22 @@ export default {
       track: {}
     };
   },
-  watch: {
-    $route(to, from) {
-      console.log(to);
+  methods: {
+    getTrack(routeName) {
       const getTrack = mapGetters(["track"]).track;
-      const id = to.params.routeName.substring(0, 1);
+      const id = routeName.split("-", 2)[0];
+
       this.track = getTrack(id).then(track => {
         this.track = track;
       });
     }
+  },
+  created() {
+    this.getTrack(this.$route.params.routeName);
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.getTrack(to.params.routeName);
+    next();
   }
 };
 </script>
