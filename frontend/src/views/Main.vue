@@ -8,11 +8,11 @@
       <router-link to="/hilfe" class="help">Hilfe</router-link>
       <div class="search"><input type="search" /></div>
       <router-link to="/profil">
-        Dein Profil
+        <span class="profile">Dein Profil</span>
         <div v-if="user" class="profile-img-container">
-          <img  :src="user.profileImgTarget" alt="avatar" />
+          <img :src="user.profileImgTarget" alt="avatar" />
         </div>
-          <img v-else src="@/assets/defaultAvatar.svg" alt="avatar" />
+        <img v-else src="@/assets/defaultAvatar.svg" alt="avatar" />
       </router-link>
     </div>
     <SideBar />
@@ -40,7 +40,7 @@ export default {
 .nav {
   position: fixed;
   width: 100%;
-  top:0;
+  top: 0;
   box-shadow: 0px 4px 11px $color-shadow;
   font-weight: 200;
   height: 60px;
@@ -95,7 +95,7 @@ export default {
   justify-content: center;
   align-items: center;
   background: #fff;
-  img{
+  img {
     max-width: 30px;
   }
 }
@@ -106,5 +106,9 @@ export default {
   width: calc(100vw - 270px);
   height: calc(100vh - 60px);
   // overflow: auto;
+}
+
+span.profile {
+  margin-right: 10px;
 }
 </style>
