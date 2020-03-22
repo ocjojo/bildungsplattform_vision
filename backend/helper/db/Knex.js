@@ -9,6 +9,4 @@ const Knex = require('knex')({
     }
   });
 
-  console.log(process.env);
-
 module.exports = Knex;

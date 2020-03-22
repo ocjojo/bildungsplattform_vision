@@ -12,6 +12,7 @@ services:
       - 3000:3000 # Backend
     volumes:
       - .:/opt/project
+      - /opt/project/node_modules/
 
     environment:
       MYSQL_ROOT_USER: root
