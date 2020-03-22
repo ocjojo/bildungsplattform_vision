@@ -28,17 +28,17 @@ export default {
     return {
       tracks: {
         heading: "Meine Kurse",
-        type: "track",
+        type: "kurs",
         list: [
           "Nachhaltiger Konsum",
           "Nachhaltigkeit einfach erklärt",
-          "Digitale Werkstatt - Kuststudio",
+          "Digitale Werkstatt - Kunststudio",
           "Mathekurs Stufe 4"
         ]
       },
       rooms: {
         heading: "Meine Räume",
-        type: "room",
+        type: "raum",
         list: ["Klasse 5a", "Nachhilfe Mathe", "Random"]
       },
       chat: {

@@ -2,7 +2,7 @@
   <div class="home">
     <div class="card latest-course">
       <div class="card-header">
-        <h2 class="dark-bg">Nachhaltiges Konsummieren</h2>
+        <h2 class="dark-bg">Nachhaltiger Konsum</h2>
       </div>
       <div class="card-body">
         <p>Du hast bereits 83% des Kurses abgeschlossen!</p>

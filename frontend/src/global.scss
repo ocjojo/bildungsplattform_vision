@@ -13,17 +13,20 @@ option {
 }
 
 :root {
-  --latest-course-img: url('/img/defaultTrack.jpg');
+  --latest-course-img: url("/img/defaultTrack.jpg");
 }
 
-button:focus, input:focus, select:focus, option:focus {
+button:focus,
+input:focus,
+select:focus,
+option:focus {
   outline: none;
 }
 
 html {
   font-size: 10px;
   font-family: inherit;
-  font-weight: 200;
+  font-weight: 400;
   color: #3d3d3d;
 }
 
@@ -76,7 +79,6 @@ li {
   border-radius: 50%;
 }
 
-
 .play:before {
   font-icon: url("@/assets/icons/play.svg");
 }
@@ -94,4 +96,10 @@ li {
 }
 .search:before {
   font-icon: url("@/assets/icons/search.svg");
+}
+.group:before {
+  font-icon: url("@/assets/icons/group.svg");
+}
+.rating:before {
+  font-icon: url("@/assets/icons/rating.svg");
 }
