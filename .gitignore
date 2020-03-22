@@ -2,6 +2,7 @@
 node_modules
 /dist
 inlets.sh
+*.sql
 
 # local env files
 .env.local
