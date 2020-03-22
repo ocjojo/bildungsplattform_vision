@@ -12,13 +12,16 @@ services:
       - 3000:3000 # Backend
     volumes:
       - .:/opt/project
+
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bildungsplattform
+
   db:
     image: mariadb
     ports:
         - 3306:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-
   adminer:
     image: adminer
     ports:

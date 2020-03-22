@@ -5,7 +5,7 @@
   "scripts": {
     "start": "concurrently \"npm run frontend\" \"npm run backend\"",
     "frontend": "cd ./frontend && vue-cli-service serve",
-    "backend": "cd ./backend && node app.js",
+    "backend": "cd ./backend && nodemon app.js",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "docker": "docker-compose exec -uwww-data vision bash"
@@ -23,6 +23,10 @@
     "concurrently": "^5.1.0",
     "core-js": "^3.6.4",
     "express": "^4.17.1",
+    "knex": "^0.20.12",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.2",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",

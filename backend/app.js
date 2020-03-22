@@ -1,6 +1,13 @@
 const express = require("express");
 const app = express();
 
+const apiRoute = require("./routes/index");
+
+
+app.use('/api', apiRoute);
+
+
+
 app.get("/", function(req, res) {
   res.send("Hello World!");
 });
