@@ -49,5 +49,8 @@ export default {
       }
       return resp;
     });
+  },
+  register(user) {
+    return post("/users/register", user);
   }
 };

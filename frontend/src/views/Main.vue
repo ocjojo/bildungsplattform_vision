@@ -9,7 +9,7 @@
       <div class="search"><input type="search" /></div>
       <router-link to="/profil">
         <span class="profile">Dein Profil</span>
-        <div v-if="user" class="profile-img-container">
+        <div v-if="user && user.profileImgTarget" class="profile-img-container">
           <img :src="user.profileImgTarget" alt="avatar" />
         </div>
         <img v-else src="@/assets/defaultAvatar.svg" alt="avatar" />
