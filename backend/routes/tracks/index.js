@@ -7,7 +7,7 @@ const trackTbl = 'tracks';
 const trackUserTbl = 'user_to_track';
 const trackLearningTbl = "learning_unit_to_track";
 const unitTbl = "learning_units";
-const mediaTbl = "learning_units_to_media";
+const mediaTbl = "learning_unit_to_media";
 
 
 router.get('/', (req, res) => {
@@ -60,31 +60,19 @@ router.get('/my', (req, res) => {
     }
 });
 
-router.get('/:id(//d+)/units', (req, res) => {
-    knex(trackLearningTbl)
-        .select(`${trackLearningTbl}.ID`, `${trackLearningTbl}.Title`, `${trackLearningTbl}.Description`,
-            `${trackLearningTbl}.CreatedAt`, `${trackLearningTbl}.UpdatedAt`, `${trackLearningTbl}.Target`,
-            `${trackLearningTbl}.Length`, `${trackLearningTbl}.Category`
+router.get('/:id(\\d+)/units', (req, res) => {
+    knex(trackTbl)
+        .select(`${trackTbl}.ID`, `${unitTbl}.ID`, `${unitTbl}.Title`, `${unitTbl}.Description`,
+            `${unitTbl}.CreatedAt`, `${unitTbl}.UpdatedAt`, `${mediaTbl}.Target`,
+            `${mediaTbl}.Length`, `${mediaTbl}.Category`
         )
-        .leftJoin(unitTbl, `${trackTbl}.ID`, `${unitTbl}.TrackId`)
+        .leftJoin(trackLearningTbl, `${trackTbl}.ID`, `${trackLearningTbl}.TrackID`)
+        .leftJoin(unitTbl, `${trackLearningTbl}.UnitID`, `${unitTbl}.ID`)
         .leftJoin(mediaTbl, `${unitTbl}.ID`, `${mediaTbl}.UnitID`)
         .where(`${trackTbl}.ID`, req.params.id)
         .then(result => {
             if(result && result.length){
-                const objToSend = [];
-                for (let i = 0; i < result.length; i++){
-                    if(result[i] && result[i].length){
-                        objToSend.push({
-                            ID: result[i].ID,
-                            Title: result[i].Title,
-                            Description: result[i].Description,
-                            CreatedAt: result[i].CreatedAt,
-                            UpdatedAt: result[i].UpdatedAt,
-                            Media: result[i].Target ? result.map(row => { return {Link: row.Target, MediaType: row.Category, Length: row.Length}}) : []
-                        });
-                    }
-                }
-                res.status(200).json(objToSend);
+                res.status(200).json(result);
             }
             else{
                 res.status(200).json({error: "No Units found"});
