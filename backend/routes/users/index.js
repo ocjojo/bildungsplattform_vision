@@ -94,4 +94,15 @@ router.get('/loggedIn', (req, res) => {
     }
 });
 
+router.get('/logout', (req, res) => {
+    if(req.user && req.user.ID) {
+        res.clearCookie('token', {
+            secure: false, 
+            httpOnly: true,
+            //sameSite: 'None'
+          }).json({ success: 'Logout was successful'});
+        //res.status(200).json({ success: 'Log out was successful'});
+    }
+});
+
 module.exports = router;

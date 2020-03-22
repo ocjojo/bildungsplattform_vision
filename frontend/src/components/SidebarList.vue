@@ -9,19 +9,41 @@
         {{ heading }}
       </li>
       <div class="list-container" :class="{ collapsed: collapsed }">
-        <li v-for="item of list" v-bind:key="item" :class="type">
-          <template v-if="type == 'kurs' || type == 'room'">
+        <template v-if="type == 'kurs'">
+          <li v-for="item of list" v-bind:key="item.ID" :class="type">
             <router-link
               :to="{
                 name: type,
-                params: { routeName: getRouterString(item), trackName: item }
+                params: {
+                  routeName: item.ID + '-' + getRouterString(item.Name),
+                  trackName: item
+                }
+              }"
+            >
+              {{ item.Name }}
+            </router-link>
+          </li>
+        </template>
+        <template v-else-if="type == 'room'">
+          <li v-for="item of list" v-bind:key="item" :class="type">
+            <router-link
+              :to="{
+                name: type,
+                params: {
+                  routeName: getRouterString(item),
+                  trackName: item
+                }
               }"
             >
               {{ item }}
             </router-link>
-          </template>
-          <template v-else>{{ item }}</template>
-        </li>
+          </li>
+        </template>
+        <template v-else>
+          <li v-for="item of list" v-bind:key="item.ID" :class="type">
+            <template>{{ item }}</template>
+          </li>
+        </template>
       </div>
     </ul>
   </div>

@@ -1,6 +1,7 @@
 import deepmerge from "deepmerge";
 import { store } from "@/store";
-const baseUrl = "http://localhost:9000/api";
+const baseUrl =
+  /*"https://vision.owlabout.de/api";*/ "http://localhost:9000/api/";
 
 function base(path, options = {}) {
   return fetch(

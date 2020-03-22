@@ -1,9 +1,9 @@
 <template>
   <div class="side-bar">
     <SidebarList
-      :heading="tracks.heading"
-      :list="tracks.list"
-      :type="tracks.type"
+      :heading="'Meine Kurse'"
+      :list="tracks"
+      :type="'kurs'"
     ></SidebarList>
     <SidebarList
       :heading="rooms.heading"
@@ -20,22 +20,17 @@
 
 <script>
 import SidebarList from "./SidebarList";
+import { mapGetters } from "@/store";
+
 export default {
   components: {
     SidebarList
   },
+  asyncComputed: {
+    ...mapGetters(["tracks"])
+  },
   data() {
     return {
-      tracks: {
-        heading: "Meine Kurse",
-        type: "kurs",
-        list: [
-          "Nachhaltiger Konsum",
-          "Nachhaltigkeit einfach erklärt",
-          "Digitale Werkstatt - Kunststudio",
-          "Mathekurs Stufe 4"
-        ]
-      },
       rooms: {
         heading: "Meine Räume",
         type: "room",
