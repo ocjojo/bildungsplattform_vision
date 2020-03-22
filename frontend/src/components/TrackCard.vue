@@ -8,8 +8,8 @@
     />
     <img v-else src="../assets/defaultTrack.jpg" :alt="track.name" /> -->
     <div class="track-info">
-      <h5>{{ track.name }}</h5>
-      <p>{{ track.description }}</p>
+      <h5>{{ track.Name }}</h5>
+      <p>{{ track.Description }}</p>
     </div>
   </div>
 </template>
@@ -43,7 +43,13 @@ export default {
   }
   .track-info {
     width: 300px;
+    padding-top: 0;
     padding: 20px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    padding-top: 0;
+    text-overflow: ellipsis;
+
     h5 {
       font-weight: 900;
       font-size: 1.6rem;

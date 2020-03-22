@@ -2,7 +2,7 @@
   <div>
     <header>
       <div class="track-info">
-        <div class="track-title">{{ $route.params.trackName }}</div>
+        <div class="track-title">{{ track.Name }}</div>
         <div class="track-detailed-info">
           <div class="track-users group">23</div>
           <div class="track-rating rating">4,5</div>
@@ -11,10 +11,10 @@
     </header>
     <section class="material">
       <div class="video"><button class="btn btn-action play"></button></div>
-      <div class="description">{{ trackDescription }}</div>
+      <div class="description">{{ track.Description }}</div>
     </section>
     <section class="forum">
-      <h2>Forum - {{ $route.params.trackName }}</h2>
+      <h2>Forum - {{ track.Name }}</h2>
       <div class="new-post-container">
         <textarea
           name="newComment"
@@ -27,12 +27,29 @@
 </template>
 
 <script>
+import { mapGetters } from "@/store";
 export default {
   data() {
     return {
-      trackDescription:
-        "Hallo. Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben und rumgedreht – und oftmals gar nicht erst gelesen. Aber bin ich allein deshalb ein schlechterer Text als andere? Na gut, ich werde nie in den Bestsellerlisten stehen. Aber andere Texte schaffen das auch nicht. Und darum stört es mich nicht besonders blind zu sein. Und sollten Sie diese Zeilen noch immer lesen, so habe ich als kleiner Blindtext etwas geschafft, wovon all die richtigen und wichtigen Texte meist nur träumen."
+      track: {}
     };
+  },
+  methods: {
+    getTrack(routeName) {
+      const getTrack = mapGetters(["track"]).track;
+      const id = routeName.split("-", 2)[0];
+
+      this.track = getTrack(id).then(track => {
+        this.track = track;
+      });
+    }
+  },
+  created() {
+    this.getTrack(this.$route.params.routeName);
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.getTrack(to.params.routeName);
+    next();
   }
 };
 </script>

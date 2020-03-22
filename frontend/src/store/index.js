@@ -1,6 +1,7 @@
 import Vue from "vue";
 import AsyncComputed from "vue-async-computed";
 import api from "@/api";
+import deepmerge from "deepmerge";
 Vue.use(AsyncComputed);
 
 export const store = Vue.observable({
@@ -26,6 +27,32 @@ const getters = {
         return store.user;
       });
     }
+  },
+  async tracks() {
+    if (store.tracks) {
+      return store.tracks;
+    } else {
+      return api.tracks().then(tracks => {
+        if (!tracks.error) {
+          Vue.set(store, "tracks", tracks);
+        }
+        return store.tracks;
+      });
+    }
+  },
+  async track(id) {
+    if (store.tracks && store.tracks.length > 0) {
+      const track = store.tracks.find(track => track.ID == id);
+      if (track) {
+        return track;
+      }
+    }
+    return api.track(id).then(track => {
+      if (!track.error) {
+        Vue.set(store, "tracks", deepmerge([track], store.tracks));
+      }
+      return track;
+    });
   }
 };
 
