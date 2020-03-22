@@ -1,9 +1,9 @@
 <template>
   <div class="card card-md">
-    <div class="track-img"></div>
-    <div class="track-info">
-      <h5>{{ track.Name }}</h5>
-      <p>{{ track.Description }}</p>
+    <div class="room-img"></div>
+    <div class="room-info">
+      <h5>{{ room.Name }}</h5>
+      <p>{{ room.Description }}</p>
     </div>
   </div>
 </template>
@@ -11,7 +11,7 @@
 <script>
 export default {
   props: {
-    track: Object
+    room: Object
   }
 };
 </script>
@@ -27,15 +27,15 @@ export default {
   &:hover {
     transform: scale(1.05);
   }
-  .track-img {
+  .room-img {
     width: 200px;
-    background: url("../assets/defaultTrack.jpg");
+    background: url("../assets/defaultRoom.jpg");
     height: 200px;
     background-size: cover;
     background-position: center;
     border-radius: 15px 0 0 15px;
   }
-  .track-info {
+  .room-info {
     width: 300px;
     padding-top: 0;
     padding: 20px;
