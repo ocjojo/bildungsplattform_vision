@@ -12,6 +12,13 @@
       </div>
     </div>
     <div class="card card-lg">
+      <div class="card-body">
+        <h2>Analytics</h2>
+      </div>
+      <div class="card-body">
+        
+      </div>
+      <div class="card-footer"></div>
     </div>
     <div class="card">
       <div class="card-header">
@@ -45,10 +52,48 @@
       <div class="card-footer"></div>
     </div>
     <div class="card">
-      <h2>Meine Top Lehrer</h2>
+      <div class="card-body">
+        <h2>Meine Top Lehrer</h2>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>1. Herr Jung</li>
+          <li>2. Frau Bär</li>
+          <li>1. Frau Schönbrunn</li>
+        </ul>
+      </div>
+      <div class="card-footer"></div>
     </div>
     <div class="card">
-      <h2>Beliebteste Kurse</h2>
+      <div class="card-header">
+        <h2>Deine beliebtesten Kurse</h2>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>
+            <div class="track-description">
+              <h5>Random Kurs Name 1</h5>
+              <div class="descr">Eine tolle Beschreibung für den Kurs</div>
+            </div>
+            <button class="btn btn-action play"></button>
+          </li>
+          <li>
+            <div class="track-description">
+              <h5>Random Kurs Name 2</h5>
+              <div class="descr">Eine tolle Beschreibung für den Kurs</div>
+            </div>
+            <button class="btn btn-action play"></button>
+          </li>
+          <li>
+            <div class="track-description">
+              <h5>Random Kurs Name 3</h5>
+              <div class="descr">Eine tolle Beschreibung für den Kurs</div>
+            </div>
+            <button class="btn btn-action play"></button>
+          </li>
+        </ul>
+      </div>
+      <div class="card-footer"></div>
     </div>
   </div>
 </template>
