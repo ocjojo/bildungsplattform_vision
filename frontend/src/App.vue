@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div class="nav">
       <img src="./assets/logo.svg" alt="logo" />
       <router-link to="/" class="dashboard">Dashboard</router-link>
-      <router-link to="/kurse">Kurse</router-link>
-      <router-link to="/raeume">Räume</router-link>
-      <router-link to="/hilfe">Hilfe</router-link>
+      <router-link to="/kurse" class="track">Kurse</router-link>
+      <router-link to="/raeume" class="community">Räume</router-link>
+      <router-link to="/hilfe" class="help">Hilfe</router-link>
       <input type="search" />
       <router-link to="/profil">
         Dein Profil
@@ -38,7 +38,19 @@ export default {
   align-items: center;
 
   .dashboard:before {
-    font-icon: url("@/assets/logo.svg");
+    font-icon: url("@/assets/icons/dashboard.svg");
+  }
+  .community:before {
+    font-icon: url("@/assets/icons/community.svg");
+  }
+  .help:before {
+    font-icon: url("@/assets/icons/help.svg");
+  }
+  .search:before {
+    font-icon: url("@/assets/icons/search.svg");
+  }
+  .track:before {
+    font-icon: url("@/assets/icons/track.svg");
   }
 
   a {
@@ -55,6 +67,9 @@ export default {
     &.router-link-exact-active {
       background: $primary-gradient;
       color: #fff;
+    }
+    &:before {
+      margin-right: 5px;
     }
   }
 }
