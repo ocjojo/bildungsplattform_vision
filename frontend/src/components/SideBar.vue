@@ -32,7 +32,7 @@ export default {
         list: [
           "Nachhaltiger Konsum",
           "Nachhaltigkeit einfach erklärt",
-          "Digitale Werkstatt - Kuststudio",
+          "Digitale Werkstatt - Kunststudio",
           "Mathekurs Stufe 4"
         ]
       },

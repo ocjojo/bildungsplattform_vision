@@ -50,7 +50,8 @@ ul {
 .list-heading {
   border-bottom: 1px solid $color-sidebar-border;
   padding: 10px 15px 10px 0;
-  font-weight: 400;
+  font-weight: 500;
+  color: #5881F9;
   cursor: pointer;
   &:before {
     font-icon: url("@/assets/icons/arrow-down-block.svg");

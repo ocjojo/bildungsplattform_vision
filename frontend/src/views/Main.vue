@@ -9,8 +9,10 @@
       <div class="search"><input type="search" /></div>
       <router-link to="/profil">
         Dein Profil
-        <img v-if="user" :src="user.profileImgTarget" alt="avatar" />
-        <img v-else src="@/assets/defaultAvatar.svg" alt="avatar" />
+        <div v-if="user" class="profile-img-container">
+          <img  :src="user.profileImgTarget" alt="avatar" />
+        </div>
+          <img v-else src="@/assets/defaultAvatar.svg" alt="avatar" />
       </router-link>
     </div>
     <SideBar />
@@ -36,11 +38,18 @@ export default {
 
 <style lang="scss">
 .nav {
+  position: fixed;
+  width: 100%;
+  top:0;
   box-shadow: 0px 4px 11px $color-shadow;
+  font-weight: 200;
   height: 60px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  z-index: 2;
+  background: #ffffffc7;
+  backdrop-filter: blur(3px);
 
   .search {
     position: relative;
@@ -62,9 +71,6 @@ export default {
     align-items: center;
     padding: 15px;
 
-    img {
-      margin-left: 10px;
-    }
     &:before {
       margin-right: 5px;
       color: $primary;
@@ -78,12 +84,27 @@ export default {
     }
   }
 }
+.profile-img-container {
+  border: solid 1px #ededed;
+  margin-left: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  img{
+    max-width: 30px;
+  }
+}
 
 .content-container {
-  position: absolute;
-  left: 270px;
-  top: 60px;
+  margin-left: 270px;
+  margin-top: 60px;
   width: calc(100vw - 270px);
   height: calc(100vh - 60px);
+  // overflow: auto;
 }
 </style>
