@@ -11,7 +11,7 @@
         <router-link
           v-bind:key="room.id"
           :to="{
-            name: 'raum',
+            name: 'room',
             params: {
               routeName: room.ID + '-' + getRouterString(room.Name)
             }
@@ -31,12 +31,12 @@ export default {
   components: {
     RoomCard
   },
-  data() {},
   asyncComputed: {
     ...mapGetters(["rooms"])
   },
   methods: {
     getRouterString(item) {
+      console.log(item);
       return item
         .toString()
         .toLowerCase()
