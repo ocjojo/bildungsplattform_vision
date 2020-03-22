@@ -21,7 +21,7 @@
         <div class="feed-item" v-bind:key="message.ID">
           <div class="avatar">
             <img src="@/assets/defaultAvatar.svg" alt="avatar" />
-            <div>{{ message.AuthorID }}</div>
+            <div>{{ message.Author ? message.Author : "" }}</div>
           </div>
           <div class="post-container">
             <div class="time">{{ formatDatetime(message.CreatedAt) }}</div>
