@@ -4,6 +4,8 @@ services:
     build:
       context: ./.docker
     container_name: vision
+    networks:
+      - db
     ports:
       # Local port: docker port
       - 9000:8080 # Frontend
@@ -18,11 +20,15 @@ services:
 
   db:
     image: mariadb
+    networks:
+      - db
     ports:
-        - 3306:3306
+      - 3306:3306
   adminer:
     image: adminer
     ports:
       # Local port: docker port
       - 8000:8080
 
+networks:
+  db:
