@@ -9,9 +9,19 @@
         </div>
       </div>
     </header>
-    <section>
-      <div class="video"><i class="play"></i></div>
+    <section class="material">
+      <div class="video"><button class="btn btn-action play"></button></div>
       <div class="description">{{ trackDescription }}</div>
+    </section>
+    <section class="forum">
+      <h2>Forum - {{ $route.params.trackName }}</h2>
+      <div class="new-post-container">
+        <textarea
+          name="newComment"
+          placeholder="Einen neuen Kommentar verfassen..."
+        ></textarea>
+        <button class="btn">Posten</button>
+      </div>
     </section>
   </div>
 </template>
@@ -59,7 +69,7 @@ header {
   }
 }
 
-section {
+section.material {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -68,14 +78,51 @@ section {
     width: 500px;
     height: 280px;
     background: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
   }
   .description {
     max-width: 600px;
+    padding: 10px;
   }
 }
 
 .group:before,
 .rating:before {
   margin-right: 10px;
+}
+
+section {
+  padding: 20px;
+}
+
+section.forum {
+  .new-post-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 700px;
+    button {
+      margin-top: 10px;
+    }
+  }
+  h2 {
+    font-weight: 200;
+  }
+}
+
+textarea {
+  width: 700px;
+  height: 100px;
+  resize: none;
+  border: solid 1px #cecaca;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  padding: 10px;
+  :focus {
+    outline: none;
+  }
 }
 </style>
