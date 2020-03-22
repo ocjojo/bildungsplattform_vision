@@ -16,7 +16,7 @@
         </div>
         <img v-else src="@/assets/defaultAvatar.svg" alt="avatar" />
         <div class="context-menu">
-          <div class="context-menu-item">Username: Paul</div>
+          <div class="context-menu-item">Username: {{ user.Fullname }}</div>
           <div class="context-menu-item">Bild ändern</div>
           <div class="context-menu-item" @click="logOut()">Ausloggen</div>
         </div>

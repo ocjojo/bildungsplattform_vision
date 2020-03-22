@@ -56,11 +56,9 @@ const getters = {
   },
   async rooms() {
     if (store.rooms) {
-      console.log(store.rooms);
       return store.rooms;
     } else {
       return api.rooms().then(rooms => {
-        console.log(rooms);
         if (!rooms.error) {
           Vue.set(store, "rooms", rooms);
         }

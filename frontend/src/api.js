@@ -1,6 +1,6 @@
 import deepmerge from "deepmerge";
 import { store } from "@/store";
-const baseUrl = window.location.origin + "/api/";
+const baseUrl = window.location.origin + "/api";
 
 function base(path, options = {}) {
   return fetch(
