@@ -1,19 +1,28 @@
 <template>
   <div class="collabsable-list">
     <ul>
-      <li class="list-heading" :class="{ rotate: collapsed }" @click="collapsed = !collapsed">
+      <li
+        class="list-heading"
+        :class="{ rotate: collapsed }"
+        @click="collapsed = !collapsed"
+      >
         {{ heading }}
       </li>
-        <div class="list-container" :class="{'collapsed': collapsed}">
-          <li v-for="item of list" v-bind:key="item" :class="type">
-            <template v-if="type == 'kurs'">
-              <router-link :to="{name: type, params: {routeName: getRouterString(item), trackName: item}}">
-                {{ item }}
-              </router-link>
-            </template>
-            <template v-else>{{ item }}</template>
-          </li>
-        </div>
+      <div class="list-container" :class="{ collapsed: collapsed }">
+        <li v-for="item of list" v-bind:key="item" :class="type">
+          <template v-if="type == 'kurs' || type == 'room'">
+            <router-link
+              :to="{
+                name: type,
+                params: { routeName: getRouterString(item), trackName: item }
+              }"
+            >
+              {{ item }}
+            </router-link>
+          </template>
+          <template v-else>{{ item }}</template>
+        </li>
+      </div>
     </ul>
   </div>
 </template>
@@ -32,10 +41,13 @@ export default {
   },
   methods: {
     getRouterString(item) {
-      return item.toString().toLowerCase().trim()
-        .replace(/&/g, '-and-')         // Replace & with 'and'
-        .replace(/[\s\W-]+/g, '-')
-        .replace(/-$/, '') // Remove last floating dash if exists
+      return item
+        .toString()
+        .toLowerCase()
+        .trim()
+        .replace(/&/g, "-and-")
+        .replace(/[\s\W-]+/g, "-")
+        .replace(/-$/, "");
     }
   }
 };
@@ -56,14 +68,14 @@ ul {
     &:hover {
       background: $color-sidebar-background;
     }
-  } 
+  }
 }
 
 .list-heading {
   border-bottom: 1px solid $color-sidebar-border;
   padding: 10px 15px 10px 0;
   font-weight: 500;
-  color: #5881F9;
+  color: #5881f9;
   cursor: pointer;
   &:before {
     font-icon: url("@/assets/icons/arrow-down-block.svg");
@@ -74,13 +86,12 @@ ul {
     display: inline-block;
     transition: 0.2s ease-in-out;
   }
-  &.rotate{
-  border: none;
+  &.rotate {
+    border: none;
     &:before {
       transform: rotate(-90deg);
     }
   }
-  
 }
 
 li.chat {

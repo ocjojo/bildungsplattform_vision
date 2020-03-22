@@ -38,7 +38,7 @@ export default {
       },
       rooms: {
         heading: "Meine Räume",
-        type: "raum",
+        type: "room",
         list: ["Klasse 5a", "Nachhilfe Mathe", "Random"]
       },
       chat: {
