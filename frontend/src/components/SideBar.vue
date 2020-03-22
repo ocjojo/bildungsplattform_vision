@@ -1,36 +1,55 @@
 <template>
   <div class="side-bar">
-    <div class="collabsable-list">
-      <li>Meine Kurse</li>
-      <ul>
-        <li>Nachhaltiger Konsum</li>
-        <li>Nachhaltigkeit einfach erklärt</li>
-        <li>Digitale Werkstatt - Kuststudio</li>
-        <li>Mathekurs Stufe 4</li>
-      </ul>
-    </div>
-    <div class="collabsable-list">
-      <li>Meine Räume</li>
-      <ul>
-        <li>Klasse 5a</li>
-        <li>Nachhilfe Mathe</li>
-        <li>Random</li>
-      </ul>
-    </div>
-    <div class="collabsable-list">
-      <li>Chat</li>
-      <ul>
-        <li>Paula</li>
-        <li>Tosten</li>
-        <li>Oscar</li>
-        <li>Madlen</li>
-        <li>Kim</li>
-        <li>Jessica</li>
-        <li>Emilia</li>
-      </ul>
-    </div>
+    <SidebarList
+      :heading="tracks.heading"
+      :list="tracks.list"
+      :type="tracks.type"
+    ></SidebarList>
+    <SidebarList
+      :heading="rooms.heading"
+      :list="rooms.list"
+      :type="rooms.type"
+    ></SidebarList>
+    <SidebarList
+      :heading="chat.heading"
+      :list="chat.list"
+      :type="chat.type"
+    ></SidebarList>
   </div>
 </template>
+
+<script>
+import SidebarList from "./SidebarList";
+export default {
+  components: {
+    SidebarList
+  },
+  data() {
+    return {
+      tracks: {
+        heading: "Meine Kurse",
+        type: "track",
+        list: [
+          "Nachhaltiger Konsum",
+          "Nachhaltigkeit einfach erklärt",
+          "Digitale Werkstatt - Kuststudio",
+          "Mathekurs Stufe 4"
+        ]
+      },
+      rooms: {
+        heading: "Meine Räume",
+        type: "room",
+        list: ["Klasse 5a", "Nachhilfe Mathe", "Random"]
+      },
+      chat: {
+        heading: "Chat",
+        type: "chat",
+        list: ["Paula", "Tosten", "Oscar", "Madlen", "Kim", "Jessica", "Emilia"]
+      }
+    };
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 .side-bar {
@@ -43,11 +62,5 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-}
-
-.collabsable-list {
-  background: $color-sidebar-list-background;
-  color: #fff;
-  padding: 10px;
 }
 </style>
