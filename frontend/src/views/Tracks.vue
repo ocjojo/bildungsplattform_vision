@@ -29,8 +29,7 @@
           :to="{
             name: 'kurs',
             params: {
-              routeName: getRouterString(track.Name),
-              trackName: track.Name
+              routeName: track.ID + '-' + getRouterString(track.Name)
             }
           }"
         >

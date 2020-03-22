@@ -43,7 +43,13 @@ export default {
   }
   .track-info {
     width: 300px;
+    padding-top: 0;
     padding: 20px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    padding-top: 0;
+    text-overflow: ellipsis;
+
     h5 {
       font-weight: 900;
       font-size: 1.6rem;
