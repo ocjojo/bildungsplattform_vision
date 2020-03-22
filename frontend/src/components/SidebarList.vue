@@ -5,7 +5,14 @@
         {{ heading }}
       </li>
         <div class="list-container" :class="{'collapsed': collapsed}">
-          <li v-for="item of list" v-bind:key="item" :class="type">{{ item }}</li>
+          <li v-for="item of list" v-bind:key="item" :class="type">
+            <template v-if="type == 'kurs'">
+              <router-link :to="{name: type, params: {routeName: getRouterString(item), trackName: item}}">
+                {{ item }}
+              </router-link>
+            </template>
+            <template v-else>{{ item }}</template>
+          </li>
         </div>
     </ul>
   </div>
@@ -24,9 +31,11 @@ export default {
     };
   },
   methods: {
-    isChat(item) {
-      console.log(item, item.type, item.type == "chat");
-      return item.type == "chat";
+    getRouterString(item) {
+      return item.toString().toLowerCase().trim()
+        .replace(/&/g, '-and-')         // Replace & with 'and'
+        .replace(/[\s\W-]+/g, '-')
+        .replace(/-$/, '') // Remove last floating dash if exists
     }
   }
 };
@@ -35,7 +44,6 @@ export default {
 <style lang="scss" scoped>
 .collabsable-list {
   background: $color-sidebar-list-background;
-  // color: #fff;
 }
 
 ul {
@@ -44,6 +52,10 @@ ul {
   li {
     padding: 4px 10px 4px 35px;
     font-size: 1.4rem;
+    cursor: pointer;
+    &:hover {
+      background: $color-sidebar-background;
+    }
   } 
 }
 
