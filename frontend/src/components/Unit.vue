@@ -54,8 +54,7 @@ section.material {
 
   .iframe-container {
     position: relative;
-    width: 500px;
-    max-width: 100%;
+    width: 100%;
     padding-bottom: 56.25%;
     background: #f3f3f3;
 
