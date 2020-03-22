@@ -4,22 +4,32 @@ services:
     build:
       context: ./.docker
     container_name: vision
+    networks:
+      - db
     ports:
       # Local port: docker port
       - 9000:8080 # Frontend
       - 3000:3000 # Backend
     volumes:
       - .:/opt/project
+      - /opt/project/node_modules/
+
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bildungsplattform
+
   db:
     image: mariadb
+    networks:
+      - db
     ports:
-        - 3306:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-
+      - 3306:3306
   adminer:
     image: adminer
     ports:
       # Local port: docker port
       - 8000:8080
 
+networks:
+  db:
