@@ -6,7 +6,7 @@
       <form @submit.prevent="submit">
         <p v-if="error">{{ error }}</p>
         <input
-          type="username"
+          type="text"
           name="username"
           placeholder="Nutzername"
           v-model="username"
@@ -30,7 +30,7 @@
           required
         />
         <input
-          type="fullname"
+          type="text"
           name="fullname"
           placeholder="Name, e.g. Max Mustermann"
           v-model="fullname"
