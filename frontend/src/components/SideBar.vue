@@ -6,9 +6,9 @@
       :type="'kurs'"
     ></SidebarList>
     <SidebarList
-      :heading="rooms.heading"
-      :list="rooms.list"
-      :type="rooms.type"
+      :heading="'Meine Räume'"
+      :list="rooms"
+      :type="'room'"
     ></SidebarList>
     <SidebarList
       :heading="chat.heading"
@@ -27,7 +27,7 @@ export default {
     SidebarList
   },
   asyncComputed: {
-    ...mapGetters(["tracks"])
+    ...mapGetters(["tracks", "rooms"])
   },
   data() {
     return {

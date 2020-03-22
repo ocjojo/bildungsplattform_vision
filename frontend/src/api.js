@@ -64,5 +64,16 @@ export default {
   },
   track(id) {
     return get("/track/" + id);
+  },
+  rooms() {
+    return get("/rooms/");
+  },
+  room(id) {
+    return get("/rooms/" + id);
+  },
+  roomMessages(id) {
+    return get(`/rooms/${id}/messages`).then(messages => {
+      return messages.error ? [] : messages;
+    });
   }
 };
