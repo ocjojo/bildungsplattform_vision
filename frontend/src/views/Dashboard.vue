@@ -15,9 +15,7 @@
       <div class="card-body">
         <h2>Analytics</h2>
       </div>
-      <div class="card-body">
-        
-      </div>
+      <div class="card-body"></div>
       <div class="card-footer"></div>
     </div>
     <div class="card recommendations">
@@ -104,8 +102,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
   name: "Home",
-  components: {
-  }
+  components: {}
 };
 </script>
 
@@ -116,25 +113,6 @@ export default {
   flex-wrap: wrap;
   justify-content: space-evenly;
   padding: 10px;
-}
-.card {
-  background: #FFFFFF;
-  box-shadow: 0px 4px 14px rgba(119, 109, 160, 0.25);
-  width: 300px;
-  min-height: 250px;
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 15px;
-}
-.card-lg {
-  width: 620px;
-}
-
-.card-footer {
-  text-align: center;
-  margin: 20px 0;
 }
 
 .latest-course {
@@ -173,7 +151,7 @@ ul {
     align-items: center;
     .track-description {
       width: 80%;
-      h5 { 
+      h5 {
         font-size: 1.6rem;
         font-weight: 200;
         margin: 5px 0;
@@ -186,25 +164,25 @@ ul {
   }
 }
 .recommendations {
-  background: url('../assets/form-red.svg');
+  background: url("../assets/form-red.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: -100px;
 }
 .top-teachers {
-  background: url('../assets/form-green.svg');
+  background: url("../assets/form-green.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: -2px;
 }
 .favorites {
-  background: url('../assets/form-purple.svg');
+  background: url("../assets/form-purple.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 100px -100px;
 }
 .analytics {
-  background: url('../assets/form-blue.svg');
+  background: url("../assets/form-blue.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: -150px -80px;
