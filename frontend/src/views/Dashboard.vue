@@ -11,13 +11,7 @@
         <button class="btn">Kurs fortführen</button>
       </div>
     </div>
-    <div class="card card-lg analytics">
-      <div class="card-body">
-        <h2>Analytics</h2>
-      </div>
-      <div class="card-body"></div>
-      <div class="card-footer"></div>
-    </div>
+    <AnalyticsCard />
     <div class="card recommendations">
       <div class="card-header">
         <h2>Empfohlen für dich</h2>
@@ -99,10 +93,13 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
+import AnalyticsCard from "../components/AnalyticsCard.vue";
 
 export default {
   name: "Home",
-  components: {}
+  components: {
+    AnalyticsCard
+  }
 };
 </script>
 
@@ -180,11 +177,5 @@ ul {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 100px -100px;
-}
-.analytics {
-  background: url("../assets/form-blue.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: -150px -80px;
 }
 </style>
