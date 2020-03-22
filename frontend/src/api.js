@@ -1,6 +1,6 @@
 import deepmerge from "deepmerge";
 import { store } from "@/store";
-const baseUrl = "https://vision.owlabout.de/api";
+const baseUrl = "http://localhost:9000/api";
 
 function base(path, options = {}) {
   return fetch(
@@ -49,6 +49,9 @@ export default {
       }
       return resp;
     });
+  },
+  logout() {
+    return get("/users/logout");
   },
   register(user) {
     return post("/users/register", user);

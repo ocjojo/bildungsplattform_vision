@@ -125,6 +125,7 @@ h2 {
 }
 
 .post-container {
+  margin-top: 3px;
 }
 
 .time {

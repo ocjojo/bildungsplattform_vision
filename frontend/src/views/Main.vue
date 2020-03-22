@@ -2,18 +2,25 @@
   <div id="app">
     <div class="nav">
       <img src="@/assets/logo.svg" alt="logo" />
-      <router-link to="/" class="dashboard">Dashboard</router-link>
-      <router-link to="/kurse" class="track">Kurse</router-link>
-      <router-link to="/raeume" class="community">Räume</router-link>
-      <router-link to="/hilfe" class="help">Hilfe</router-link>
+      <div class="nav-item">
+        <router-link to="/" class="dashboard">Dashboard</router-link>
+        <router-link to="/kurse" class="track">Kurse</router-link>
+        <router-link to="/raeume" class="community">Räume</router-link>
+        <router-link to="/hilfe" class="help">Hilfe</router-link>
+      </div>
       <div class="search"><input type="search" /></div>
-      <router-link to="/profil">
+      <a class="profile-menu" tabindex="0">
         <span class="profile">Dein Profil</span>
         <div v-if="user && user.profileImgTarget" class="profile-img-container">
           <img :src="user.profileImgTarget" alt="avatar" />
         </div>
         <img v-else src="@/assets/defaultAvatar.svg" alt="avatar" />
-      </router-link>
+        <div class="context-menu">
+          <div class="context-menu-item">Username: Paul</div>
+          <div class="context-menu-item">Bild ändern</div>
+          <div class="context-menu-item" @click="logOut()">Ausloggen</div>
+        </div>
+      </a>
     </div>
     <SideBar />
     <div class="content-container">
@@ -25,6 +32,7 @@
 <script>
 import SideBar from "@/components/SideBar";
 import { mapGetters } from "@/store";
+import api from "@/api";
 
 export default {
   asyncComputed: {
@@ -32,6 +40,13 @@ export default {
   },
   components: {
     SideBar
+  },
+  methods: {
+    logOut() {
+      api.logout().then(resp => {
+        this.$router.push({ name: "Login" });
+      });
+    }
   }
 };
 </script>
@@ -50,7 +65,10 @@ export default {
   z-index: 2;
   background: #ffffffc7;
   backdrop-filter: blur(3px);
-
+  .nav-item {
+    display: flex;
+    height: 100%;
+  }
   .search {
     position: relative;
   }
@@ -69,13 +87,15 @@ export default {
     height: 100%;
     display: flex;
     align-items: center;
-    padding: 15px;
+    padding: 15px 20px;
+    cursor: pointer;
 
     &:before {
       margin-right: 5px;
       color: $primary;
     }
-    &.router-link-exact-active {
+    &.router-link-exact-active,
+    &:hover {
       background: $primary-gradient;
       color: #fff;
       &:before {
@@ -110,5 +130,35 @@ export default {
 
 span.profile {
   margin-right: 10px;
+}
+
+.context-menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background: $primary-gradient;
+  width: 100%;
+  .context-menu-item {
+    padding: 8px 15px;
+    border-bottom: solid 1px rgba(186, 154, 210, 0.8);
+    &:hover {
+      background: #fff;
+      color: $primary;
+    }
+  }
+}
+
+a.profile-menu {
+  position: relative;
+  &:focus,
+  &:hover {
+    outline: none;
+    background: $primary-gradient;
+    color: #fff;
+    .context-menu {
+      display: block;
+    }
+  }
 }
 </style>

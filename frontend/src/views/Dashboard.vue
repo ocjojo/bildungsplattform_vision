@@ -57,7 +57,7 @@
         <ul>
           <li>1. Herr Jung</li>
           <li>2. Frau Bär</li>
-          <li>1. Frau Schönbrunn</li>
+          <li>3. Frau Schmidt</li>
         </ul>
       </div>
       <div class="card-footer"></div>
