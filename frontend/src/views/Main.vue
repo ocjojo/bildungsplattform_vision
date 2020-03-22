@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div class="nav">
-      <img src="@/assets/logo.svg" alt="logo" />
+      <router-link to="/" class="logo"
+        ><img src="@/assets/logo.svg" alt="logo"
+      /></router-link>
       <div class="nav-item">
         <router-link to="/" class="dashboard">Dashboard</router-link>
         <router-link to="/kurse" class="track">Kurse</router-link>
@@ -104,6 +106,11 @@ export default {
         color: inherit;
       }
     }
+  }
+  .logo,
+  .logo:hover,
+  .logo.router-link-exact-active {
+    background: transparent;
   }
 }
 .profile-img-container {
