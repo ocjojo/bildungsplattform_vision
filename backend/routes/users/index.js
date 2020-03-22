@@ -95,7 +95,6 @@ router.get('/loggedIn', (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-    console.log(req.user);
     if(req.user && req.user.ID) {
         res.clearCookie('token', {
             secure: false, 
