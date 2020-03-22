@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,200,400&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+:root, textarea, input, select, option {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+html {
+    font-size: 10px;
+    font-family: inherit;
+    font-weight: 200;
+    color: #3d3d3d;
+}
+
+body {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; 
+}
+
+input {
+    padding: 4px 15px;
+    margin: 10px;
+    line-height: 1.5;
+    border-radius: 30px;
+    border: solid 1px #dbdbdb;
+    width: 170px;
+}
