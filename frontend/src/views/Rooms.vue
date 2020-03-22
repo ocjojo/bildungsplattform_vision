@@ -5,8 +5,49 @@
         <h2>Deine Räume</h2>
       </div>
     </header>
+
+    <section>
+      <template v-for="room of rooms">
+        <router-link
+          v-bind:key="room.id"
+          :to="{
+            name: 'raum',
+            params: {
+              routeName: room.ID + '-' + getRouterString(room.Name)
+            }
+          }"
+        >
+          <RoomCard v-bind:key="room.ID" :room="room"></RoomCard>
+        </router-link>
+      </template>
+    </section>
   </div>
 </template>
+
+<script>
+import { mapGetters } from "@/store";
+import RoomCard from "../components/RoomCard";
+export default {
+  components: {
+    RoomCard
+  },
+  data() {},
+  asyncComputed: {
+    ...mapGetters(["rooms"])
+  },
+  methods: {
+    getRouterString(item) {
+      return item
+        .toString()
+        .toLowerCase()
+        .trim()
+        .replace(/&/g, "-and-") // Replace & with 'and'
+        .replace(/[\s\W-]+/g, "-")
+        .replace(/-$/, ""); // Remove last floating dash if exists
+    }
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 header {
@@ -33,5 +74,9 @@ header {
       margin: 10px;
     }
   }
+}
+
+section {
+  padding: 12px;
 }
 </style>

@@ -71,7 +71,7 @@ header {
     position: absolute;
     width: 100%;
     bottom: 0;
-    height: 100px;
+    height: 80px;
     background: rgba(37, 37, 37, 0.5);
     color: #fff;
     display: flex;
