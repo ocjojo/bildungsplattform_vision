@@ -26,7 +26,8 @@
 
 <script>
 import { mapGetters } from "@/store";
-import RoomCard from "../components/RoomCard";
+import { slugify } from "@/util";
+import RoomCard from "@/components/RoomCard";
 export default {
   components: {
     RoomCard
@@ -36,14 +37,7 @@ export default {
   },
   methods: {
     getRouterString(item) {
-      console.log(item);
-      return item
-        .toString()
-        .toLowerCase()
-        .trim()
-        .replace(/&/g, "-and-") // Replace & with 'and'
-        .replace(/[\s\W-]+/g, "-")
-        .replace(/-$/, ""); // Remove last floating dash if exists
+      return slugify(item);
     }
   }
 };
