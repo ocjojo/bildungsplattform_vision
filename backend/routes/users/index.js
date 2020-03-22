@@ -16,7 +16,7 @@ router.use(bodyParser.json());
 router.post('/register', (req, res) => {
     let { username, mail, password, fullname, groupid } = req.body;
     if(!groupid || groupid < 1 || groupid > 3) {
-        res.status(200).json({ error: 'Ivalid groupid' });
+        res.status(200).json({ error: 'Invalid groupid' });
     }
     if (!username || !password || !mail || !fullname || username.trim().length === 0 
         || password.trim().length === 0 || mail.trim().length === 0 ||  fullname.trim().length === 0) {
