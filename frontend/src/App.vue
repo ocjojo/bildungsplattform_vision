@@ -9,7 +9,7 @@
       <div class="search"><input type="search" /></div>
       <router-link to="/profil">
         Dein Profil
-        <img src="./assets/defaultAvatar.svg" alt="avatar" />
+        <img :src="user.profileImgTarget" alt="avatar" />
       </router-link>
     </div>
     <SideBar />
@@ -21,8 +21,10 @@
 
 <script>
 import SideBar from "./components/SideBar";
+import { mapGetters } from "@/store";
 
 export default {
+  ...mapGetters([{ user: require("./assets/defaultAvatar.svg") }]),
   components: {
     SideBar
   }
