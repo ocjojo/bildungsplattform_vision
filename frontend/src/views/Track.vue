@@ -15,10 +15,13 @@
     </section>
     <section class="forum">
       <h2>Forum - {{ $route.params.trackName }}</h2>
-      <textarea
-        name="newComment"
-        placeholder="Einen neuen Kommentar verfassen..."
-      ></textarea>
+      <div class="new-post-container">
+        <textarea
+          name="newComment"
+          placeholder="Einen neuen Kommentar verfassen..."
+        ></textarea>
+        <button class="btn">Posten</button>
+      </div>
     </section>
   </div>
 </template>
@@ -78,9 +81,11 @@ section.material {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
   }
   .description {
     max-width: 600px;
+    padding: 10px;
   }
 }
 
@@ -94,7 +99,15 @@ section {
 }
 
 section.forum {
-  padding: 20px;
+  .new-post-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 700px;
+    button {
+      margin-top: 10px;
+    }
+  }
   h2 {
     font-weight: 200;
   }
