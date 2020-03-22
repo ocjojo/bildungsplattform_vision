@@ -5,7 +5,12 @@ const IconfontWebpackPlugin = require("iconfont-webpack-plugin");
 module.exports = {
   devServer: {
     port: 8080,
-    disableHostCheck: true
+    disableHostCheck: true,
+    proxy: {
+      "^/api": {
+        target: "http://localhost:3000"
+      }
+    }
   },
   css: {
     loaderOptions: {
