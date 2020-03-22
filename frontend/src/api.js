@@ -52,5 +52,11 @@ export default {
   },
   register(user) {
     return post("/users/register", user);
+  },
+  tracks() {
+    return get("/tracks/");
+  },
+  track(id) {
+    return get("/track/" + id);
   }
 };
