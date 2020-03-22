@@ -6,7 +6,7 @@
       <form @submit.prevent="submit">
         <p v-if="error">{{ error }}</p>
         <input
-          type="email"
+          type="text"
           name="email"
           placeholder="E-Mail"
           v-model="email"
