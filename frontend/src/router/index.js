@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Dashboard from "../views/Dashboard.vue";
+import { store } from "@/store";
+import Login from "@/views/Login.vue";
+import Register from "@/views/Register.vue";
 
 Vue.use(VueRouter);
 
@@ -8,7 +10,27 @@ const routes = [
   {
     path: "/",
     name: "Dashboard",
-    component: Dashboard
+    meta: {
+      requiresAuth: true
+    },
+    component: () =>
+      import(/* webpackChunkName: "tracks" */ "@/views/Dashboard.vue")
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
+    meta: {
+      guest: true
+    }
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: Register,
+    meta: {
+      guest: true
+    }
   },
   {
     path: "/kurse",
@@ -17,7 +39,10 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "tracks" */ "../views/Tracks.vue")
+      import(/* webpackChunkName: "tracks" */ "@/views/Tracks.vue"),
+    meta: {
+      requiresAuth: true
+    }
   }
 ];
 
@@ -26,5 +51,28 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.length === 0) {
+    next({ name: "Dashboard" });
+  }
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.loggedIn) {
+      next();
+    } else {
+      next({ name: "Login" });
+    }
+  } else if (to.matched.some(record => record.meta.guest)) {
+    if (!store.loggedIn) {
+      next();
+    } else {
+      next({ name: "Dashboard" });
+    }
+  } else {
+    next();
+  }
+});
+
+router.onError(console.error);
 
 export default router;

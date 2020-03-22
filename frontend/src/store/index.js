@@ -2,13 +2,8 @@ import Vue from "vue";
 import AsyncComputed from "vue-async-computed";
 Vue.use(AsyncComputed);
 
-const store = Vue.observable({
-  user: {
-    email: "max@muster.de",
-    firstname: "Max",
-    lastname: "Muster",
-    profileImgTarget: require("../assets/logo.svg")
-  }
+export const store = Vue.observable({
+  loggedIn: false
 });
 
 const getters = {
@@ -17,7 +12,20 @@ const getters = {
       return store.user;
     } else {
       // replace with actual ajax
-      return Promise.resolve(store.user);
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve({
+            email: "max@muster.de",
+            firstname: "Max",
+            lastname: "Muster",
+            profileImgTarget: require("../assets/logo.svg")
+          });
+        }, 5000);
+      }).then(user => {
+        store.loggedIn = true;
+        Vue.set(store, "user", user);
+        return store.user;
+      });
     }
   }
 };
@@ -37,5 +45,5 @@ export function mapGetters(definition) {
     }
   });
 
-  return { asyncComputed };
+  return asyncComputed;
 }
