@@ -1,8 +1,15 @@
 <template>
   <div class="home">
-    <div class="card">
-      <h2 class="dark-bg">Nachhaltiges Konsummieren</h2>
-      <p>Du hast bereits 83% des Kurses abgeschlossen!</p>
+    <div class="card latest-course">
+      <div class="card-header">
+        <h2 class="dark-bg">Nachhaltiges Konsummieren</h2>
+      </div>
+      <div class="card-body">
+        <p>Du hast bereits 83% des Kurses abgeschlossen!</p>
+      </div>
+      <div class="card-footer">
+        <button class="btn">Kurs fortführen</button>
+      </div>
     </div>
     <div class="card card-lg">
     </div>
@@ -42,11 +49,24 @@ export default {
   width: 280px;
   min-height: 250px;
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .card-lg {
   width: 580px;
 }
 
+.card-footer {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.latest-course {
+  background: linear-gradient(#0000009c, #4d4848bd), $latest-course-img;
+  background-size: cover;
+  background-blend-mode: luminosity, saturation;
+}
 h2 {
   font-size: 1.8rem;
   margin: 0;
@@ -57,6 +77,13 @@ h2 {
 
 h2.dark-bg {
   background: rgba(37, 37, 37, 0.5);
+  color: #fff;
+}
+
+.latest-course p {
+  padding: 1rem;
+  margin: 20px 0;
+  text-align: center;
   color: #fff;
 }
 </style>

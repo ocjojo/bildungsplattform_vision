@@ -12,6 +12,14 @@ option {
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
+:root {
+  --latest-course-img: url('/img/defaultTrack.jpg');
+}
+
+button:focus, input:focus, select:focus, option:focus {
+  outline: none;
+}
+
 html {
   font-size: 10px;
   font-family: inherit;
@@ -40,4 +48,22 @@ input {
 
 li {
   list-style: none;
+}
+
+.btn {
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  position: relative;
+  background: $primary-gradient-background;
+  background-size: 200%;
+  background-position-x: -100%;
+  color: #fff;
+  &:hover {
+    background-position-x: -40px;
+  }
+  &:focus {
+    // filter: saturate(0.2) brightness(0.9);
+    background-position-x: 0;
+  }
 }
