@@ -51,7 +51,10 @@ export default {
     });
   },
   logout() {
-    return get("/users/logout");
+    return get("/users/logout").then(resp => {
+      store.set("user", null);
+      store.set("loggedIn", false);
+    });
   },
   register(user) {
     return post("/users/register", user);
