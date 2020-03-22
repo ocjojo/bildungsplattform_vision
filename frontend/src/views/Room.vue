@@ -24,7 +24,7 @@
             <div>{{ message.AuthorID }}</div>
           </div>
           <div class="post-container">
-            <div class="time">{{ message.CreatedAt }}</div>
+            <div class="time">{{ formatDatetime(message.CreatedAt) }}</div>
             {{ message.Message }}
           </div>
         </div>
@@ -35,6 +35,7 @@
 
 <script>
 import { mapGetters } from "@/store";
+import { formatDatetime } from "@/util";
 export default {
   data() {
     return {
@@ -43,6 +44,7 @@ export default {
     };
   },
   methods: {
+    formatDatetime,
     getData(routeName) {
       const getters = mapGetters(["room", "roomMessages"]);
       const id = routeName.split("-", 2)[0];
