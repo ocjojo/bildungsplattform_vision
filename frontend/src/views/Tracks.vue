@@ -11,6 +11,9 @@
             Hier kannst du alle Verfügbaren Kurse durchsuchen. Wähle einfach
             einen Filter aus, um schnell das zu finden, was du suchst!
           </p>
+          <div class="search">
+            <input type="search" placeholder="Suchbegriff eingeben..." />
+          </div>
         </div>
         <div class="filter-container">
           <div class="filter-item">Kategorie</div>
@@ -22,6 +25,7 @@
     <section>
       <template v-for="track of availableTracks">
         <router-link
+          v-bind:key="track.id"
           :to="{
             name: 'kurs',
             params: {
@@ -164,5 +168,23 @@ section {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.search {
+  position: relative;
+  max-width: 350px;
+  input {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+.search:before {
+  font-icon: url("@/assets/icons/search.svg");
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: $primary;
 }
 </style>
