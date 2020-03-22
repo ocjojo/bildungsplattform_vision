@@ -1,29 +1,28 @@
 import Vue from "vue";
 import AsyncComputed from "vue-async-computed";
+import api from "@/api";
 Vue.use(AsyncComputed);
 
 export const store = Vue.observable({
   loggedIn: false
 });
 
+store.set = function(property, value) {
+  Vue.set(store, property, value);
+};
+
 const getters = {
   async user() {
     if (store.user) {
       return store.user;
     } else {
-      // replace with actual ajax
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve({
-            email: "max@muster.de",
-            firstname: "Max",
-            lastname: "Muster",
-            profileImgTarget: require("../assets/logo.svg")
-          });
-        }, 5000);
-      }).then(user => {
-        store.loggedIn = true;
-        Vue.set(store, "user", user);
+      return api.loggedIn().then(user => {
+        if (user.error) {
+          store.loggedIn = false;
+        } else {
+          store.loggedIn = true;
+          Vue.set(store, "user", user);
+        }
         return store.user;
       });
     }
