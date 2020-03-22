@@ -35,7 +35,7 @@ export default {
 <style lang="scss" scoped>
 .collabsable-list {
   background: $color-sidebar-list-background;
-  color: #fff;
+  // color: #fff;
 }
 
 ul {
