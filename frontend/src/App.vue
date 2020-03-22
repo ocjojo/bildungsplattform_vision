@@ -9,7 +9,8 @@
       <div class="search"><input type="search" /></div>
       <router-link to="/profil">
         Dein Profil
-        <img :src="user.profileImgTarget" alt="avatar" />
+        <img v-if="user" :src="user.profileImgTarget" alt="avatar" />
+        <img v-else src="./assets/defaultAvatar.svg" alt="avatar" />
       </router-link>
     </div>
     <SideBar />
@@ -24,7 +25,7 @@ import SideBar from "./components/SideBar";
 import { mapGetters } from "@/store";
 
 export default {
-  ...mapGetters([{ user: require("./assets/defaultAvatar.svg") }]),
+  ...mapGetters(['user']),
   components: {
     SideBar
   }
