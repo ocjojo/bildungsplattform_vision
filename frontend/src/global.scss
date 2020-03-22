@@ -79,6 +79,30 @@ li {
   border-radius: 50%;
 }
 
+.card {
+  background: #ffffff;
+  box-shadow: 0px 4px 14px rgba(119, 109, 160, 0.25);
+  width: 300px;
+  min-height: 250px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 15px;
+}
+.card-lg {
+  width: 620px;
+}
+
+.card-md {
+  width: 500px;
+}
+
+.card-footer {
+  text-align: center;
+  margin: 20px 0;
+}
+
 .play:before {
   font-icon: url("@/assets/icons/play.svg");
 }
@@ -102,4 +126,7 @@ li {
 }
 .rating:before {
   font-icon: url("@/assets/icons/rating.svg");
+}
+.filter-item:after {
+  font-icon: url("@/assets/icons/arrow-down-block.svg");
 }
