@@ -24,6 +24,21 @@
             </router-link>
           </li>
         </template>
+        <template v-else-if="type == 'room'">
+          <li v-for="item of list" v-bind:key="item" :class="type">
+            <router-link
+              :to="{
+                name: type,
+                params: {
+                  routeName: getRouterString(item),
+                  trackName: item
+                }
+              }"
+            >
+              {{ item }}
+            </router-link>
+          </li>
+        </template>
         <template v-else>
           <li v-for="item of list" v-bind:key="item.ID" :class="type">
             <template>{{ item }}</template>
@@ -52,9 +67,9 @@ export default {
         .toString()
         .toLowerCase()
         .trim()
-        .replace(/&/g, "-and-") // Replace & with 'and'
+        .replace(/&/g, "-and-")
         .replace(/[\s\W-]+/g, "-")
-        .replace(/-$/, ""); // Remove last floating dash if exists
+        .replace(/-$/, "");
     }
   }
 };

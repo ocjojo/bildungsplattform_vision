@@ -111,8 +111,8 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  padding: 10px;
+  // justify-content: space-evenly;
+  padding: 20px;
 }
 
 .latest-course {
