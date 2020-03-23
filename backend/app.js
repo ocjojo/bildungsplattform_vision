@@ -7,7 +7,7 @@ const jwt_secret = "jwt_secret";
 
 const apiRoute = require("./routes/index");
 
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 
 
 app.use(cookieParser());
